@@ -319,6 +319,32 @@ ul {
     background-color: var(--bg-secondary);
 }
 
+.catalog-filters {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.filter-btn {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--glass-border);
+    padding: 8px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background: var(--blue-dark);
+    color: #fff;
+    border-color: var(--blue-dark);
+}
+
 .product-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

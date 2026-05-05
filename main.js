@@ -119,3 +119,33 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// --- CATALOG FILTER LOGIC ---
+const filterBtns = document.querySelectorAll('.filter-btn');
+const productItems = document.querySelectorAll('.product-item');
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        btn.classList.add('active');
+
+        const filterValue = btn.getAttribute('data-filter');
+
+        productItems.forEach(item => {
+            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                // Show item
+                item.style.display = 'block';
+                // Small animation
+                gsap.fromTo(item, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" });
+            } else {
+                // Hide item
+                item.style.display = 'none';
+            }
+        });
+        
+        // Refresh ScrollTrigger since layout changed
+        ScrollTrigger.refresh();
+    });
+});
